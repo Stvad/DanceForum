@@ -62,6 +62,7 @@ export function getDefaultVotingSystem() {
     EAForum: "eaEmojis",
     LessWrong: "namesAttachedReactions",
     AlignmentForum: "namesAttachedReactions",
+    DanceForum: "eaEmojis",
     default: "default",
   })
 }
