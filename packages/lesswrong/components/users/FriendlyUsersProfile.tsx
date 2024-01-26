@@ -310,15 +310,19 @@ const FriendlyUsersProfile = ({terms, slug, classes}: {
         <PostsList2 hideAuthor showDraftTag={false} terms={scheduledPostsTerms} showNoResults={false} showLoading={false} showLoadMore={false} boxShadow={false} />
         <PostsList2 hideAuthor showDraftTag={false} terms={unlistedTerms} showNoResults={false} showLoading={false} showLoadMore={false} boxShadow={false} />
       </AnalyticsContext>
-      <div className={classes.sectionSubHeadingRow}>
-        <Typography variant="headline" className={classes.sectionSubHeading}>Draft/hidden sequences</Typography>
-        {ownPage && currentUser.karma >= SHOW_NEW_SEQUENCE_KARMA_THRESHOLD && <Link to="/sequencesnew">
-          <SectionButton>
-            <LibraryAddIcon /> New sequence
-          </SectionButton>
-        </Link>}
-      </div>
-      <SequencesGridWrapper terms={{view: "userProfilePrivate", userId: user._id, limit: 3}} showLoadMore={true} />
+      {(currentUser?.isAdmin || ((currentUser?.karma ?? 0) >= SHOW_NEW_SEQUENCE_KARMA_THRESHOLD)) &&
+        <>
+          <div className={classes.sectionSubHeadingRow}>
+            <Typography variant="headline" className={classes.sectionSubHeading}>Draft/hidden sequences</Typography>
+            {ownPage && currentUser.karma >= SHOW_NEW_SEQUENCE_KARMA_THRESHOLD && <Link to="/sequencesnew">
+              <SectionButton>
+                <LibraryAddIcon/> New sequence
+              </SectionButton>
+            </Link>}
+          </div>
+          <SequencesGridWrapper terms={{view: 'userProfilePrivate', userId: user._id, limit: 3}} showLoadMore={true}/>
+        </>
+      }
     </>
   }]
   if (userOrganizesGroups?.length) {
