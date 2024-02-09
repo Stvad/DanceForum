@@ -264,6 +264,7 @@ const LoginFormEA = ({
       open={!!action}
       setAction={wrappedSetAction}
       isSignup={action === "signup"}
+      facebookEnabled={false}
     />
   );
 }

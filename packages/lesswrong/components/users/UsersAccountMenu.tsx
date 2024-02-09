@@ -57,6 +57,7 @@ const EAUsersAccountMenu = ({classes}: {
         open={!!action}
         setAction={setAction}
         isSignup={action === "signup"}
+        facebookEnabled={false}
       />
     </div>
   );
