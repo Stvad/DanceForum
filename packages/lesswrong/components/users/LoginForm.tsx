@@ -263,6 +263,7 @@ const LoginFormEA = ({
     <Components.EALoginPopover
       action={action}
       setAction={wrappedSetAction}
+      facebookEnabled={false}
     />
   );
 }

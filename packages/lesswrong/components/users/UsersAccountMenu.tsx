@@ -52,7 +52,9 @@ const EAUsersAccountMenu = ({classes}: {
       >
         Sign up
       </EAButton>
-      <EALoginPopover />
+      <EALoginPopover
+        facebookEnabled={false}
+      />
     </div>
   );
 }
