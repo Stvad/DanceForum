@@ -440,11 +440,16 @@ export const menuTabs: ForumOptions<Array<MenuTab>> = {
       compressedIconComponent: Info,
       showOnCompressed: true,
     }, {
+      id: 'feedback',
+      title: preferredHeadingCase('Forum Feedback'),
+      link: '/contact',
+      subItem: true,
+    }, {
       id: 'contact',
       title: preferredHeadingCase('Contact Us'),
       link: '/contact',
       subItem: true,
-    }
+    },
   ]
 }
 
