@@ -20,6 +20,7 @@ import truncateTagDescription from "../../lib/utils/truncateTagDescription";
 import { getTagStructuredData } from "./TagPageRouter";
 import { HEADER_HEIGHT } from "../common/Header";
 import { isFriendlyUI } from "../../themes/forumTheme";
+import {quickTakesTagsEnabledSetting} from '../../lib/publicSettings'
 
 export const tagPageHeaderStyles = (theme: ThemeType) => ({
   postListMeta: {
@@ -210,7 +211,7 @@ const TagPage = ({classes}: {
     PostsList2, ContentItemBody, Loading, AddPostsToTag, Error404, Typography,
     PermanentRedirect, HeadTags, UsersNameDisplay, TagFlagItem, TagDiscussionSection,
     TagPageButtonRow, ToCColumn, SubscribeButton, CloudinaryImage2, TagIntroSequence,
-    TagTableOfContents, TagVersionHistoryButton, ContentStyles,
+    TagTableOfContents, TagVersionHistoryButton, ContentStyles, CommentsListCondensed,
   } = Components;
   const currentUser = useCurrentUser();
   const { query, params: { slug } } = useLocation();
@@ -456,6 +457,17 @@ const TagPage = ({classes}: {
             >
               <AddPostsToTag tag={tag} />
             </PostsList2>
+            {quickTakesTagsEnabledSetting.get() && <CommentsListCondensed
+              label="Quick takes"
+              terms={{
+                view: "tagSubforumComments" as const,
+                tagId: tag._id,
+              }}
+              initialLimit={8}
+              itemsPerPage={20}
+              showTotal
+              hideTag
+            />}
           </AnalyticsContext>}
         </div>
       </ToCColumn>
