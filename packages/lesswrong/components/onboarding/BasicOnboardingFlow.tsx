@@ -5,6 +5,7 @@ const BasicOnboardingFlow = ({viewAsAdmin}: { viewAsAdmin?: boolean }) => <Compo
   viewAsAdmin={viewAsAdmin}
   stages={{
     user: <Components.EAOnboardingUserStage icon={null}/>,
+    additionalInfo: <Components.DFAdditionalInfoStage/>,
   }}/>
 
 const BasicOnboardingFlowComponent = registerComponent(

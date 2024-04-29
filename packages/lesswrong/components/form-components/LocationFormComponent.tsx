@@ -23,7 +23,7 @@ export const geoSuggestStyles = (theme: ThemeType) => ({
     backgroundColor: 'transparent',
     border: "2px solid transparent",
     borderBottom: `1px solid ${theme.palette.text.normal}`,
-    padding: ".5em .5em 0.5em 0em !important",
+    padding: ".5em .5em 0.5em 0em",
     width: 350,
     fontSize: 13,
     color: theme.palette.primary.main,

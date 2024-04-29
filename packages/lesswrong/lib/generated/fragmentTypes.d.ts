@@ -439,6 +439,7 @@ interface UsersDefaultFragment { // fragment on Users
   readonly recentKarmaInfo: any,
   readonly hideSunshineSidebar: boolean,
   readonly inactiveSurveyEmailSentAt: Date | null,
+  readonly wsdcNumber: number | null,
   readonly userSurveyEmailSentAt: Date | null,
 }
 
@@ -3050,6 +3051,7 @@ interface UsersProfile extends UsersMinimumInfo, SharedUserBooleans { // fragmen
   readonly allCommentingDisabled: boolean,
   readonly commentingOnOtherUsersDisabled: boolean,
   readonly conversationsDisabled: boolean,
+  readonly wsdcNumber: number | null,
 }
 
 interface UsersCurrent extends UsersProfile, SharedUserBooleans { // fragment on Users
@@ -3218,6 +3220,7 @@ interface UsersCurrent extends UsersProfile, SharedUserBooleans { // fragment on
   readonly showRecommendedPartners: boolean,
   readonly hideActiveDialogueUsers: boolean,
   readonly hideSunshineSidebar: boolean,
+  readonly wsdcNumber: number | null,
   readonly optedOutOfSurveys: boolean | null,
   readonly postGlossariesPinned: boolean,
 }
@@ -3513,6 +3516,7 @@ interface UsersEdit extends UsersCurrent { // fragment on Users
   readonly hideFrontpageBookAd: boolean,
   readonly hideFrontpageBook2020Ad: boolean,
   readonly deleted: boolean,
+  readonly wsdcNumber: number | null,
   readonly permanentDeletionRequestedAt: Date | null,
 }
 
@@ -3555,6 +3559,7 @@ interface UsersProfileEdit { // fragment on Users
   readonly facebookProfileURL: string,
   readonly twitterProfileURL: string,
   readonly githubProfileURL: string,
+  readonly wsdcNumber: number | null,
 }
 
 interface UsersCrosspostInfo { // fragment on Users

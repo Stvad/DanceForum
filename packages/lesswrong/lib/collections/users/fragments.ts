@@ -95,6 +95,7 @@ registerFragment(`
     allCommentingDisabled
     commentingOnOtherUsersDisabled
     conversationsDisabled
+    wsdcNumber
   }
 `);
 
@@ -219,6 +220,7 @@ registerFragment(`
     hideActiveDialogueUsers
 
     hideSunshineSidebar
+    wsdcNumber
     optedOutOfSurveys
     postGlossariesPinned
   }
@@ -512,6 +514,7 @@ registerFragment(`
     hideFrontpageBook2020Ad
 
     deleted
+    wsdcNumber
     permanentDeletionRequestedAt
   }
 `)
@@ -569,6 +572,7 @@ registerFragment(`
     facebookProfileURL
     twitterProfileURL
     githubProfileURL
+    wsdcNumber
   }
 `)
 

@@ -3096,6 +3096,17 @@ const schema: SchemaType<"Users"> = {
     canRead: ['admins'],
     canUpdate: ['admins'],
   },
+  
+  wsdcNumber: {
+    type: Number,
+    optional: true,
+    nullable: true,
+    canRead: ['guests'],
+    canCreate: ['members'],
+    canUpdate: [userOwns, 'sunshineRegiment', 'admins'],
+    label: "WSDC Number",
+    group: formGroups.default,
+  }
 };
 
 export default schema;
