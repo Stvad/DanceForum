@@ -633,5 +633,10 @@
     "acceptsSchemaHash": "c192cfffc5d07ae27caf1477da048644",
     "acceptedByMigration": "20240425T075639.add_people_directory.ts",
     "timestamp": "2024-04-25T07:56:39.000Z"
+  },
+  {
+    "acceptsSchemaHash": "501675659a25e292d63216f08d78c445",
+    "acceptedByMigration": "20240429T191255.msf_add_wsds_number.ts",
+    "timestamp": "2024-04-29T19:12:55.000Z"
   }
 ]
