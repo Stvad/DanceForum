@@ -684,7 +684,7 @@ const schema: SchemaType<"Users"> = {
     group: formGroups.siteCustomizations,
     allowedValues: ['listView', 'gridView'],
     ...schemaDefaultValue('listView'),
-    hidden: isEAForum,
+    hidden: true,
     control: "select",
     form: {
       options: function () { // options for the select form control
@@ -747,6 +747,7 @@ const schema: SchemaType<"Users"> = {
     group: formGroups.siteCustomizations,
     canCreate: ['members'],
     control: 'checkbox',
+    hidden: true,
     label: "Hide Intercom"
   },
 
@@ -774,6 +775,7 @@ const schema: SchemaType<"Users"> = {
     control: 'checkbox',
     group: formGroups.siteCustomizations,
     label: "Hide other users' Elicit predictions until I have predicted myself",
+    hidden: true,
   },
   
   hideAFNonMemberInitialWarning: {
@@ -1829,9 +1831,9 @@ const schema: SchemaType<"Users"> = {
     canRead: ['guests'],
     canCreate: ['members'],
     canUpdate: [userOwns, 'sunshineRegiment', 'admins'],
-    group: isLWorAF ? formGroups.siteCustomizations : formGroups.generalInfo,
-    order: isLWorAF ? 101 : 5, // would use isFriendlyUI but that's not available here
-    label: isLWorAF ? "Public map location" : "Location",
+    group: formGroups.siteCustomizations,
+    order: 101,
+    label: "Public map location",
     control: 'LocationFormComponent',
     form: {
       variant: "grey",
