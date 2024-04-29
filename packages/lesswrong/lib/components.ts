@@ -1153,3 +1153,5 @@ importComponent("PeopleDirectorySkeletonTextCell", () => require('../components/
 
 importComponent("OnboardingFlow", () => require('../components/onboarding/OnboardingFlow'));
 importComponent("BasicOnboardingFlow", () => require('../components/onboarding/BasicOnboardingFlow'));
+
+importComponent("DFAdditionalInfoStage", () => require('../components/onboarding/DFAdditionalInfoStage'));
