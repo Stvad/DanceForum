@@ -1400,7 +1400,7 @@ const schema: SchemaType<"Users"> = {
 
   notificationCommentsOnSubscribedPost: {
     label: `Comments on posts/events I'm subscribed to`,
-    ...notificationTypeSettingsField(),
+    ...notificationTypeSettingsField({ channel: "both" }),
   },
   notificationShortformContent: {
     label: isEAForum
@@ -1410,15 +1410,15 @@ const schema: SchemaType<"Users"> = {
   },
   notificationRepliesToMyComments: {
     label: "Replies to my comments",
-    ...notificationTypeSettingsField(),
+    ...notificationTypeSettingsField({ channel: "both" }),
   },
   notificationRepliesToSubscribedComments: {
     label: "Replies to comments I'm subscribed to",
-    ...notificationTypeSettingsField(),
+    ...notificationTypeSettingsField({ channel: "both" }),
   },
   notificationSubscribedUserPost: {
     label: "Posts by users I'm subscribed to",
-    ...notificationTypeSettingsField(),
+    ...notificationTypeSettingsField({ channel: "both" }),
     onCreate: () => {
       if (!isLWorAF) {
         return {...defaultNotificationTypeSettings, channel: 'both'}
@@ -1493,7 +1493,7 @@ const schema: SchemaType<"Users"> = {
   },
   notificationNewMention: {
     label: "Someone has mentioned me in a post or a comment",
-    ...notificationTypeSettingsField(),
+    ...notificationTypeSettingsField({ channel: "both" }),
   },
   notificationDialogueMessages: {
     label: "New dialogue content in a dialogue I'm participating in",
