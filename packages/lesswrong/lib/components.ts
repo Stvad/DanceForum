@@ -1212,6 +1212,7 @@ importComponent("OnboardingFlow", () => require('../components/onboarding/Onboar
 importComponent("BasicOnboardingFlow", () => require('../components/onboarding/BasicOnboardingFlow'));
 
 importComponent("DFAdditionalInfoStage", () => require('../components/onboarding/DFAdditionalInfoStage'));
+importComponent("DFHome", () => require('../components/danceforum/DFHome'));
 
 importComponent(["LanguageModelChat", "LlmChatMessage"], () => require('../components/languageModels/LanguageModelChat'));
 importComponent("PopupLanguageModelChat", () => require('../components/languageModels/PopupLanguageModelChat'));
