@@ -2880,7 +2880,7 @@ const schema: SchemaType<"Posts"> = {
 
       if (!firstComment) return null;
 
-      return firstComment.contents.html;
+      return firstComment.contents?.html;
     }
   }),
 
