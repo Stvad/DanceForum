@@ -1199,7 +1199,7 @@ const eaLwAfForumSpecificRoutes = forumSelect<Route[]>({
     {
       name:'home',
       path:'/',
-      componentName: 'LWHome',
+      componentName: 'DFHome',
       enableResourcePrefetch: true,
       sunshineSidebar: true //TODO: remove this in production?
     },

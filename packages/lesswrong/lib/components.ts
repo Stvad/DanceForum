@@ -1143,3 +1143,4 @@ importComponent("OnboardingFlow", () => require('../components/onboarding/Onboar
 importComponent("BasicOnboardingFlow", () => require('../components/onboarding/BasicOnboardingFlow'));
 
 importComponent("DFAdditionalInfoStage", () => require('../components/onboarding/DFAdditionalInfoStage'));
+importComponent("DFHome", () => require('../components/danceforum/DFHome'));
