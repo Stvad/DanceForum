@@ -1235,6 +1235,7 @@ const eaLwAfForumSpecificRoutes = forumSelect<Route[]>({
       name:'home',
       path:'/',
       componentName: 'DFHome',
+      description: "A forum & a wiki for discussions about West Coast Swing (Modern Swing). A place to share and develop your understanding of the dance, find WCS events near you, and connect with other dancers. A Wiki covering WCS concepts and techniques, tips for dance conventions and other WCS related topics.",
       enableResourcePrefetch: true,
       sunshineSidebar: true,
       hasLeftNavigationColumn: true,
