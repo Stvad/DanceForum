@@ -24,6 +24,16 @@ export const danceForumTheme: SiteThemeSpecification = {
             justifyContent: 'flex-end',
           },
         },
+        EAUsersProfileImage: {
+          hoverOver: {
+            borderRadius: 6,
+          },
+        },
+        UsersProfileImage: {
+          root: {
+            borderRadius: 6,
+          },
+        },
       },
     }
   },
