@@ -2,6 +2,7 @@ import React, {useCallback, useState} from 'react'
 import {Components, registerComponent} from '../../lib/vulcan-lib'
 import {useEAOnboarding} from '../ea-forum/onboarding/useEAOnboarding'
 import {styles as inputStyles} from '../ea-forum/onboarding/EAOnboardingInput'
+import {useCurrentUser} from '../common/withUser'
 
 
 const styles = (theme: ThemeType) => ({
@@ -44,6 +45,7 @@ export const DFAdditionalInfoStage = ({classes}: {
   const {updateCurrentUser, goToNextStage, goToNextStageAfter, viewAsAdmin} = useEAOnboarding()
   const [wsdcNumber, setWsdcNumber] = useState('')
   const [mapLocation, setMapLocation] = useState(null)
+  const currentUser = useCurrentUser()
 
   const onContinue = useCallback(async () => {
     // If this is an admin testing, don't make any changes
@@ -73,6 +75,7 @@ export const DFAdditionalInfoStage = ({classes}: {
     EAButton,
     SectionTitle,
     LocationPicker,
+    EAUsersProfileImage,
   } = Components
   
   return (
@@ -93,6 +96,10 @@ export const DFAdditionalInfoStage = ({classes}: {
     >
       <div>
         Share some additional information to improve you forum experience (optional)
+      </div>
+      <div>
+        <SectionTitle title="Profile Image" className={classes.title}/>
+        <EAUsersProfileImage user={currentUser!}/>
       </div>
       <div>
         <SectionTitle title="City" className={classes.title}/>
