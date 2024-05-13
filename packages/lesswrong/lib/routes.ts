@@ -375,7 +375,6 @@ if (taggingNameIsSet.get()) {
       subtitleComponentName: 'TagPageTitle',
       previewComponentName: 'TagHoverPreview',
       background: "white",
-      noIndex: true,
     },
     {
       name: 'tagDiscussionCustomNameRedirect',
@@ -389,7 +388,6 @@ if (taggingNameIsSet.get()) {
       titleComponentName: 'TagHistoryPageTitle',
       subtitleComponentName: 'TagHistoryPageTitle',
       enableResourcePrefetch: tagRouteWillDefinitelyReturn200,
-      noIndex: true,
     },
     {
       name: 'tagHistoryCustomNameRedirect',
