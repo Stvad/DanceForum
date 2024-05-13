@@ -35,7 +35,8 @@ const styles = (theme: ThemeType): JssStyles => ({
     position: isFriendlyUI ? 'absolute' : "relative",
     top: isFriendlyUI ? 0 : undefined,
     left: isFriendlyUI ? -93 : undefined,
-    [theme.breakpoints.down("sm")]: {
+    //todo: alternatively bring the toc down like on EA forum? (by disabling comment TOC)
+    [theme.breakpoints.down("md")]: {
       position: 'relative',
       top: 'auto',
       left: 'auto'
