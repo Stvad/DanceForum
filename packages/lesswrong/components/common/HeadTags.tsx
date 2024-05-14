@@ -31,7 +31,8 @@ const HeadTags = ({
     const url = combineUrls(getSiteUrl(), getBasePath(pathname))
     const ogUrl = ogUrlProp || url
     const canonicalUrl = canonicalUrlProp || url
-    const description = descriptionProp || currentRoute?.description || taglineSetting.get()
+    const comboDescription = descriptionProp ? `${descriptionProp} — ${taglineSetting.get()}` : descriptionProp
+    const description = comboDescription || currentRoute?.description || taglineSetting.get()
 
     const tabLongTitle = tabLongTitleSetting.get() || tabTitleSetting.get()
     const tabShortTitle = tabTitleSetting.get() || tabLongTitle
