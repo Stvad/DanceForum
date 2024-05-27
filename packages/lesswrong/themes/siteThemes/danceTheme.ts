@@ -34,6 +34,11 @@ export const danceForumTheme: SiteThemeSpecification = {
             borderRadius: 6,
           },
         },
+        EALoginPopover: {
+          lightbulb: {
+            display: 'none',
+          },
+        },
       },
     }
   },
