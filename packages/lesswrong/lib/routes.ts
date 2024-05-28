@@ -357,6 +357,7 @@ if (taggingNameIsSet.get()) {
       titleComponentName: 'TagPageTitle',
       subtitleComponentName: 'TagPageTitle',
       previewComponentName: 'TagHoverPreview',
+      background: "white",
     },
     {
       name: 'tagsSingleRedirectCustomName',
