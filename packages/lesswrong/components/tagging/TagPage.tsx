@@ -40,12 +40,8 @@ export const tagPageHeaderStyles = (theme: ThemeType) => ({
 });
 
 const sidePaddingStyle = (theme: ThemeType) => ({
-  paddingLeft: 42,
-  paddingRight: 42,
-  [theme.breakpoints.down('xs')]: {
-    paddingLeft: '8px',
-    paddingRight: '8px',
-  },
+  paddingLeft: 0,
+  paddingRight: 0,
 })
 
 // Also used in TagCompareRevisions, TagDiscussionPage
