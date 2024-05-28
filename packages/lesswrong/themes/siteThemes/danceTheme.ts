@@ -39,6 +39,11 @@ export const danceForumTheme: SiteThemeSpecification = {
             display: 'none',
           },
         },
+        TagPageButtonRow: {
+          buttonsRow: {
+            marginTop: '0.5em',
+          }
+        },
       },
     }
   },
