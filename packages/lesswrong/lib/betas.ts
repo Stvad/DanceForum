@@ -41,7 +41,7 @@ export const userHasEAHomeHandbook = adminOnly
 export const userCanCreateCommitMessages = moderatorOnly;
 export const userHasRedesignedSettingsPage = disabled;
 export const userCanUseSharing = (user: UsersCurrent|DbUser|null): boolean => moderatorOnly(user) || userOverNKarmaOrApproved(1)(user);
-export const userHasNewTagSubscriptions =  isEAForum ? shippedFeature : disabled
+export const userHasNewTagSubscriptions =  isFriendlyUI ? shippedFeature : disabled
 export const userHasDefaultProfilePhotos = disabled
 
 export const userHasAutosummarize = adminOnly
