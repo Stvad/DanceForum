@@ -5,7 +5,13 @@ import { REVIEW_YEAR } from './reviewUtils';
 import { forumSelect } from './forumTypeUtils';
 import pickBy from 'lodash/pickBy';
 import qs from 'qs';
-import { getPostPingbackById, getPostPingbackByLegacyId, getPostPingbackBySlug, getUserPingbackBySlug } from './pingback';
+import {
+  getPostPingbackById,
+  getPostPingbackByLegacyId,
+  getPostPingbackBySlug,
+  getTagPingbackBySlug,
+  getUserPingbackBySlug,
+} from './pingback';
 import { eaSequencesHomeDescription } from '../components/ea-forum/EASequencesHome';
 import { pluralize } from './vulcan-lib';
 import { forumSpecificRoutes } from './forumSpecificRoutes';
@@ -362,6 +368,7 @@ if (taggingNameIsSet.get()) {
       previewComponentName: 'TagHoverPreview',
       enableResourcePrefetch: tagRouteWillDefinitelyReturn200,
       background: "white",
+      getPingback: getTagPingbackBySlug,
     },
     {
       name: 'tagsSingleRedirectCustomName',
@@ -474,6 +481,7 @@ if (taggingNameIsSet.get()) {
       titleComponentName: 'TagPageTitle',
       subtitleComponentName: 'TagPageTitle',
       previewComponentName: 'TagHoverPreview',
+      getPingback: getTagPingbackBySlug,
       enableResourcePrefetch: tagRouteWillDefinitelyReturn200,
     },
     {
