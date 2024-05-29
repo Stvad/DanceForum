@@ -44,6 +44,13 @@ export const danceForumTheme: SiteThemeSpecification = {
             marginTop: '0.5em',
           }
         },
+        PopupCommentEditor: {
+          editor: {
+            '& .EditorFormComponent-maxHeight': {
+              overflowY: 'auto',
+            },
+          },
+        },
       },
     }
   },
