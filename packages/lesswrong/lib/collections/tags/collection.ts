@@ -71,7 +71,9 @@ makeEditable({
       canUpdate: ['members'],
       canCreate: ['members']
     },
-    order: 10
+    order: 10,
+    // todo after merge, also make configurable if we're doing this thing
+    // pingbacks: true,
   }
 });
 

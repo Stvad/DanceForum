@@ -26,7 +26,7 @@ export const htmlToPingbacks = async (html: string, exclusions?: Array<{collecti
       // domain, and the domain doesn't matter at all except in whether or not
       // it's in the domain whitelist (which it will only be if it's overridden
       // by an absolute link).
-      const linkTargetAbsolute = new URLClass(link, getSiteUrl());
+      const linkTargetAbsolute = new URLClass(link.link, getSiteUrl());
       
       const hostType = classifyHost(linkTargetAbsolute.host)
       if (hostType==="onsite" || hostType==="mirrorOfUs") {
@@ -59,14 +59,24 @@ export const htmlToPingbacks = async (html: string, exclusions?: Array<{collecti
   return pingbacks;
 };
 
-const extractLinks = (html: string): Array<string> => {
+const extractLinks = (html: string): Array<{link: string, blockId?: string}> => {
+  /**
+   * todo : extract containing paragraph and plausibly highlight the link
+   * then in hover preview, show the paragraph with the link highlighted instead of generic hover preview
+   * 
+   * there are "block" things, plausibly I can just detect the id and use hash links?
+   */
   const $ = cheerioParse(html);
   let targets: Array<string> = [];
-  $('a').each((i, anchorTag) => {
-    const href = $(anchorTag)?.attr('href')
-    if (href)
-      targets.push(href);
-  });
-  return targets;
+  return $('a').toArray().map(( anchorTag) => ({
+    link: $(anchorTag)?.attr('href'),
+    blockId: $(anchorTag).closest('[id^="block"]').attr('id'),
+  })).filter((a) => a.link) as Array<{link: string, blockId?: string}>;
+  // $('a').each((i, anchorTag) => {
+  //   const href = $(anchorTag)?.attr('href')
+  //   if (href)
+  //     targets.push(href);
+  // });
+  // return targets;
 }
 

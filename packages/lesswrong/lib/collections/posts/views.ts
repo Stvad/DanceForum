@@ -1,19 +1,25 @@
-import moment from 'moment';
-import { getKarmaInflationSeries, timeSeriesIndexExpr } from './karmaInflation';
-import { combineIndexWithDefaultViewIndex, ensureIndex, ensureCustomPgIndex } from '../../collectionIndexUtils';
-import type { FilterMode, FilterSettings, FilterTag } from '../../filterSettings';
-import { isAF, isEAForum } from '../../instanceSettings';
-import { defaultVisibilityTags } from '../../publicSettings';
-import { frontpageTimeDecayExpr, postScoreModifiers, timeDecayExpr } from '../../scoring';
-import { viewFieldAllowAny, viewFieldNullOrMissing } from '../../vulcan-lib';
-import { Posts } from './collection';
-import { postStatuses, startHerePostIdSetting } from './constants';
-import uniq from 'lodash/uniq';
-import { INITIAL_REVIEW_THRESHOLD, getPositiveVoteThreshold, QUICK_REVIEW_SCORE_THRESHOLD, ReviewPhase, REVIEW_AND_VOTING_PHASE_VOTECOUNT_THRESHOLD, VOTING_PHASE_REVIEW_THRESHOLD } from '../../reviewUtils';
-import { jsonArrayContainsSelector } from '../../utils/viewUtils';
-import { EA_FORUM_COMMUNITY_TOPIC_ID } from '../tags/collection';
-import { filter, isEmpty, pick } from 'underscore';
-import { visitorGetsDynamicFrontpage } from '../../betas';
+import moment from 'moment'
+import {getKarmaInflationSeries, timeSeriesIndexExpr} from './karmaInflation'
+import {combineIndexWithDefaultViewIndex, ensureCustomPgIndex, ensureIndex} from '../../collectionIndexUtils'
+import type {FilterMode, FilterSettings, FilterTag} from '../../filterSettings'
+import {isAF, isEAForum} from '../../instanceSettings'
+import {defaultVisibilityTags} from '../../publicSettings'
+import {frontpageTimeDecayExpr, postScoreModifiers, timeDecayExpr} from '../../scoring'
+import {viewFieldAllowAny, viewFieldNullOrMissing} from '../../vulcan-lib'
+import {Posts} from './collection'
+import {postStatuses, startHerePostIdSetting} from './constants'
+import uniq from 'lodash/uniq'
+import {
+  getPositiveVoteThreshold,
+  QUICK_REVIEW_SCORE_THRESHOLD,
+  REVIEW_AND_VOTING_PHASE_VOTECOUNT_THRESHOLD,
+  ReviewPhase,
+  VOTING_PHASE_REVIEW_THRESHOLD,
+} from '../../reviewUtils'
+import {jsonArrayContainsSelector} from '../../utils/viewUtils'
+import {EA_FORUM_COMMUNITY_TOPIC_ID} from '../tags/collection'
+import {filter, isEmpty, pick} from 'underscore'
+import {visitorGetsDynamicFrontpage} from '../../betas'
 
 export const DEFAULT_LOW_KARMA_THRESHOLD = -10
 export const MAX_LOW_KARMA_THRESHOLD = -1000
@@ -1325,22 +1331,30 @@ Posts.addView("hasEverDialogued", (terms: PostsViewTerms) => {
   }
 })
 
-Posts.addView("pingbackPosts", (terms: PostsViewTerms) => {
-  return {
-    selector: {
-      ...jsonArrayContainsSelector("pingbacks.Posts", terms.postId),
-      baseScore: {$gt: 0}
-    },
-    options: {
-      sort: { baseScore: -1 },
-    },
-  }
-});
-ensureIndex(Posts,
-  augmentForDefaultView({ "pingbacks.Posts": 1, baseScore: 1 }),
-  { name: "posts.pingbackPosts" }
-);
-void ensureCustomPgIndex(`CREATE INDEX IF NOT EXISTS idx_posts_pingbacks ON "Posts" USING gin(pingbacks);`);
+function createPingbackView(targetCollection: CollectionNameString) {
+  const indexField = `pingbacks.${targetCollection}` as `pingbacks.${string}`
+  Posts.addView(`pingback${targetCollection}`, (terms: PostsViewTerms) => {
+    return {
+      selector: {
+        ...jsonArrayContainsSelector(indexField, terms.postId),
+        baseScore: {$gt: 0},
+      },
+      options: {
+        sort: {baseScore: -1},
+      },
+    }
+  })
+  
+  ensureIndex(Posts,
+    augmentForDefaultView({[indexField]: 1, baseScore: 1}),
+    {name: `posts.pingback${targetCollection}`},
+  )
+}
+
+createPingbackView('Posts')
+createPingbackView('Tags')
+
+void ensureCustomPgIndex(`CREATE INDEX IF NOT EXISTS idx_posts_pingbacks ON "Posts" USING gin(pingbacks);`)
 
 // TODO: refactor nominations2018 to use nominationCount + postedAt
 Posts.addView("nominations2018", (terms: PostsViewTerms) => {
