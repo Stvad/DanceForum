@@ -11,6 +11,7 @@ import {
 import { isEAForum } from "../../lib/instanceSettings";
 import { isFriendlyUI, preferredHeadingCase } from "../../themes/forumTheme";
 import { Link } from '../../lib/reactRouterWrapper';
+import {quickTakesMaxAgeDaysSetting} from '../../lib/publicSettings'
 
 const styles = (theme: ThemeType) => ({
   communityToggle: {
@@ -121,6 +122,7 @@ const QuickTakesSection = ({classes}: {
           <QuickTakesList
             showCommunity={showCommunity}
             className={classes.list}
+            maxAgeDays={quickTakesMaxAgeDaysSetting.get()}
           />
         </>
       )}

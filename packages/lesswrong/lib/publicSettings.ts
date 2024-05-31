@@ -189,3 +189,5 @@ export const quickTakesTagsEnabledSetting = new DatabasePublicSetting<boolean>('
 export const vertexEnabledSetting = new DatabasePublicSetting<boolean>('googleVertex.enabled', false);
 
 export const postsListViewTypeSetting = new DatabasePublicSetting<string>('posts.viewType', 'list');
+
+export const quickTakesMaxAgeDaysSetting = new DatabasePublicSetting<number>('feed.quickTakesMaxAgeDays', 5);
