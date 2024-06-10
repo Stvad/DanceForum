@@ -640,9 +640,19 @@
     "timestamp": "2024-04-29T15:57:12.000Z"
   },
   {
+    "acceptsSchemaHash": "501675659a25e292d63216f08d78c445",
+    "acceptedByMigration": "20240429T191255.msf_add_wsds_number.ts",
+    "timestamp": "2024-04-29T19:12:55.000Z"
+  },
+  {
     "acceptsSchemaHash": "5f15590a8aa900ee210026b863dde23e",
     "acceptedByMigration": "20240502T164437.include_indexes_and_views_in_schema.ts",
     "timestamp": "2024-05-02T16:44:37.000Z"
+  },
+  {
+    "acceptsSchemaHash": "686739254a73ddf6ef74c8af507bfdf0",
+    "acceptedByMigration": "20240503T192424.update_notification_defaults.ts",
+    "timestamp": "2024-05-03T19:24:24.000Z"
   },
   {
     "acceptsSchemaHash": "224c974d441de3727845f2dec5ba8aac",
@@ -673,5 +683,10 @@
     "acceptsSchemaHash": "6fc595baf02ccdf4ffdf8777a5981d32",
     "acceptedByMigration": "20240526T111308.set_not_null_clientId_2.ts",
     "timestamp": "2024-05-26T11:13:08.000Z"
+  },
+  {
+    "acceptsSchemaHash": "369a319cca4b365db2c976b7f74f49c2",
+    "acceptedByMigration": "20240610T014626.rebase_noop.ts",
+    "timestamp": "2024-06-10T01:46:26.000Z"
   }
 ]
