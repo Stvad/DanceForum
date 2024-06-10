@@ -688,5 +688,10 @@
     "acceptsSchemaHash": "369a319cca4b365db2c976b7f74f49c2",
     "acceptedByMigration": "20240610T014626.rebase_noop.ts",
     "timestamp": "2024-06-10T01:46:26.000Z"
+  },
+  {
+    "acceptsSchemaHash": "a40d21a9f1a58c39ef6f10d674e7c6d6",
+    "acceptedByMigration": "20240610T023324.collect_pingbacks_on_tags.ts",
+    "timestamp": "2024-06-10T02:33:24.000Z"
   }
 ]

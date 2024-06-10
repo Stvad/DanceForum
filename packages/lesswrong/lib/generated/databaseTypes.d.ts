@@ -1290,6 +1290,7 @@ interface DbTag extends DbObject {
   legacyData: any /*{"definitions":[{"blackbox":true}]}*/
   description: EditableFieldContents | null
   description_latest: string | null
+  pingbacks: any /*{"definitions":[{}]}*/
   subforumWelcomeText: EditableFieldContents | null
   subforumWelcomeText_latest: string | null
   moderationGuidelines: EditableFieldContents | null
