@@ -158,6 +158,14 @@ export const styles = (theme: ThemeType): JssStyles => ({
     ...theme.typography.body2,
     ...theme.typography.commentStyle,
   },
+  friendlyTagHeader: {
+    "& .AddPostsToTag-root" : {
+      padding: 0,
+    },
+    "& .SectionTitle-title": {
+      lineHeight: "29px",
+    },
+  },
   postsTaggedTitle: {
     color: theme.palette.grey[600]
   },
@@ -186,16 +194,18 @@ const PostsListHeading: FC<{
   query: Record<string, string>,
   classes: ClassesType,
 }> = ({tag, query, classes}) => {
-  const {SectionTitle, PostsListSortDropdown} = Components;
+  const {SectionTitle, PostsListSortDropdown, AddPostsToTag} = Components;
   if (isFriendlyUI) {
     return (
-      <>
-        <SectionTitle title={`Posts tagged ${tag.name}`} />
+      <div className={classes.friendlyTagHeader}>
+        <SectionTitle title={`Posts tagged ${tag.name}`}>
+          <AddPostsToTag tag={tag} />
+        </SectionTitle>
         <div className={classes.postListMeta}>
           <PostsListSortDropdown value={query.sortedBy || "relevance"} />
           <div className={classes.relevance}>Relevance</div>
         </div>
-      </>
+      </div>
     );
   }
   return (
@@ -457,7 +467,7 @@ const TagPage = ({classes}: {
               tagId={tag._id}
               itemsPerPage={200}
             >
-              <AddPostsToTag tag={tag} />
+              {!isFriendlyUI && <AddPostsToTag tag={tag} />}
             </PostsList2>
             {quickTakesTagsEnabledSetting.get() && <CommentsListCondensed
               label="Quick takes"
