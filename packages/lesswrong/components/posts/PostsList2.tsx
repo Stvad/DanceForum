@@ -42,6 +42,7 @@ const PostsList2 = ({classes, ...props}: PostsList2Props) => {
     placeholderCount,
     showFinalBottomBorder,
     viewType,
+    header,
   } = usePostsList(props);
 
   const { LoadMore, PostsNoResults, SectionFooter, PostsItem, PostsLoading } = Components;
@@ -61,37 +62,40 @@ const PostsList2 = ({classes, ...props}: PostsList2Props) => {
   }
 
   return (
-    <div className={classNames({[classes.itemIsLoading]: loading && dimWhenLoading})}>
-      {error && <Error error={decodeIntlError(error)} />}
-      {loading && showLoading && (topLoading || dimWhenLoading) &&
-        <PostsLoading
-          placeholderCount={placeholderCount || limit}
-          viewType={viewType}
-        />
-      }
-      {orderedResults && !orderedResults.length && <PostsNoResults />}
+    <>
+      {header}
+      <div className={classNames({[classes.itemIsLoading]: loading && dimWhenLoading})}>
+        {error && <Error error={decodeIntlError(error)}/>}
+        {loading && showLoading && (topLoading || dimWhenLoading) &&
+          <PostsLoading
+            placeholderCount={placeholderCount || limit}
+            viewType={viewType}
+          />
+        }
+        {orderedResults && !orderedResults.length && <PostsNoResults/>}
 
-      <AnalyticsContext viewType={viewType}>
-        <div className={boxShadow ? classes.posts : undefined}>
-          {itemProps?.map((props) => <PostsItem key={props.post._id} {...props} />)}
-        </div>
-      </AnalyticsContext>
+        <AnalyticsContext viewType={viewType}>
+          <div className={boxShadow ? classes.posts : undefined}>
+            {itemProps?.map((props) => <PostsItem key={props.post._id} {...props} />)}
+          </div>
+        </AnalyticsContext>
 
-      {showLoadMore && <SectionFooter>
-        <LoadMore
-          {...loadMoreProps}
-          loading={loading}
-          loadMore={loadMore}
-          hideLoading={dimWhenLoading || !showLoading}
-          // It's important to use hidden here rather than not rendering the component,
-          // because LoadMore has an "isFirstRender" check that prevents it from showing loading dots
-          // on the first render. Not rendering resets this
-          hidden={!maybeMorePosts && !loading}
-          sectionFooterStyles
-        />
-        { children }
-      </SectionFooter>}
-    </div>
+        {showLoadMore && <SectionFooter>
+          <LoadMore
+            {...loadMoreProps}
+            loading={loading}
+            loadMore={loadMore}
+            hideLoading={dimWhenLoading || !showLoading}
+            // It's important to use hidden here rather than not rendering the component,
+            // because LoadMore has an "isFirstRender" check that prevents it from showing loading dots
+            // on the first render. Not rendering resets this
+            hidden={!maybeMorePosts && !loading}
+            sectionFooterStyles
+          />
+          {children}
+        </SectionFooter>}
+      </div>
+    </>
   )
 }
 

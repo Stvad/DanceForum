@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import {useState, useCallback, ReactNode} from 'react'
 import { useMulti } from "../../lib/crud/withMulti";
 import { useCurrentUser } from "../common/withUser";
 import { sortBy } from 'underscore';
@@ -66,6 +66,7 @@ export type PostsListConfig = {
    * if there is no provider).
    */
   viewType?: PostsListViewType | "fromContext",
+  header?: ReactNode,
 }
 
 const defaultTooltipPlacement = isFriendlyUI
@@ -104,6 +105,7 @@ export const usePostsList = ({
   hideShortform = false,
   loadMoreMessage,
   viewType: configuredViewType = "list",
+  ...restProps
 }: PostsListConfig) => {
   const [haveLoadedMore, setHaveLoadedMore] = useState(false);
 
@@ -269,5 +271,6 @@ export const usePostsList = ({
     showFinalBottomBorder,
     placeholderCount,
     viewType,
+    ...restProps,
   };
 }
