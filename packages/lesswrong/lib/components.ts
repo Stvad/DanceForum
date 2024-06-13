@@ -1156,3 +1156,7 @@ importComponent("BasicOnboardingFlow", () => require('../components/onboarding/B
 
 importComponent("DFAdditionalInfoStage", () => require('../components/onboarding/DFAdditionalInfoStage'));
 importComponent("DFHome", () => require('../components/danceforum/DFHome'));
+
+importComponent("UnifiedPingbackList", () => require('../components/pingbacks/UnifiedPingbackList.tsx'));
+importComponent("TagPingbackList", () => require('../components/pingbacks/TagPingbackList.tsx'));
+importComponent("PostPingbackList", () => require('../components/pingbacks/PostPingbackList.tsx'));

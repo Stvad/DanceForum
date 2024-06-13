@@ -7,6 +7,7 @@ import { MAX_COLUMN_WIDTH } from './PostsPage';
 import { isLWorAF } from '../../../lib/instanceSettings';
 import { getVotingSystemByName } from '../../../lib/voting/votingSystems';
 import { isFriendlyUI } from '../../../themes/forumTheme';
+import {expandedPingbacksEnabledSetting} from '@/lib/publicSettings.ts'
 
 const HIDE_POST_BOTTOM_VOTE_WORDCOUNT_LIMIT = 300
 
@@ -76,7 +77,7 @@ const PostsPagePostFooter = ({post, sequenceId, classes}: {
   const currentUser = useCurrentUser();
   const votingSystemName = post.votingSystem || "default";
   const votingSystem = getVotingSystemByName(votingSystemName);
-  const { PostsVote, BookmarkButton, SharePostButton, PostActionsButton, BottomNavigation, PingbacksList, FooterTagList } = Components;
+  const { PostsVote, BookmarkButton, SharePostButton, PostActionsButton, BottomNavigation, PingbacksList, FooterTagList, UnifiedPingbackList } = Components;
   const wordCount = post.contents?.wordCount || 0
   const PostBottomSecondaryVotingComponent = votingSystem?.getPostBottomSecondaryVotingComponent?.();
   const isEAEmojis = votingSystemName === "eaEmojis";
@@ -123,7 +124,9 @@ const PostsPagePostFooter = ({post, sequenceId, classes}: {
     </div>}
 
     {userHasPingbacks(currentUser) && <AnalyticsContext pageSectionContext="pingbacks">
-      <PingbacksList postId={post._id}/>
+      {expandedPingbacksEnabledSetting.get() ? 
+        <UnifiedPingbackList postId={post._id}/> :
+        <PingbacksList postId={post._id}/>}
     </AnalyticsContext>}
   </>
 }

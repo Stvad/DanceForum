@@ -693,5 +693,10 @@
     "acceptsSchemaHash": "a40d21a9f1a58c39ef6f10d674e7c6d6",
     "acceptedByMigration": "20240610T023324.collect_pingbacks_on_tags.ts",
     "timestamp": "2024-06-10T02:33:24.000Z"
+  },
+  {
+    "acceptsSchemaHash": "24d91ae3629f5201966f1bdb54d8d919",
+    "acceptedByMigration": "20240613T023734.create_pingback_indices.ts",
+    "timestamp": "2024-06-13T02:37:34.000Z"
   }
 ]

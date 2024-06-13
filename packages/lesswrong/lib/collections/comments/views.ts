@@ -7,6 +7,7 @@ import { viewFieldNullOrMissing } from '../../vulcan-lib';
 import { Comments } from './collection';
 import { EA_FORUM_COMMUNITY_TOPIC_ID } from '../tags/collection';
 import pick from 'lodash/pick';
+import {jsonArrayContainsSelector} from '@/lib/utils/viewUtils'
 
 declare global {
   interface CommentsViewTerms extends ViewTermsBase {
@@ -769,3 +770,26 @@ void ensureCustomPgIndex(`
   ON "Comments" ("postId", "baseScore" DESC, "postedAt" DESC)
   WHERE ("baseScore" >= 15)
 `);
+
+Comments.addView("pingbackComments", (terms: CommentsViewTerms) => {
+  return {
+    selector: {
+      ...(terms.filter.postId ? jsonArrayContainsSelector("pingbacks.Posts", terms.filter.postId): {}),
+      ...(terms.filter.tagId ? jsonArrayContainsSelector("pingbacks.Tags", terms.filter.tagId): {}),
+      baseScore: {$gt: 0},
+    },
+    options: {
+      sort: {baseScore: -1},
+    },
+  }
+})
+
+ensureIndex(Comments,
+  augmentForDefaultView({ "pingbacks.Posts": 1, baseScore: 1 }),
+  { name: "comments.pingbackPosts" }
+);
+
+ensureIndex(Comments,
+  augmentForDefaultView({ "pingbacks.Tags": 1, baseScore: 1 }),
+  { name: "comments.pingbackTags" }
+);
