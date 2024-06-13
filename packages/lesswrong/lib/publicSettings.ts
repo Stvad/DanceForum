@@ -196,3 +196,5 @@ export const textReplacementsSetting = new DatabasePublicSetting<Record<string, 
 export const postsListViewTypeSetting = new DatabasePublicSetting<string>('posts.viewType', 'list');
 
 export const quickTakesMaxAgeDaysSetting = new DatabasePublicSetting<number>('feed.quickTakesMaxAgeDays', 5);
+
+export const expandedPingbacksEnabledSetting = new DatabasePublicSetting<boolean>('pingbacks.enableExpanded', false);
