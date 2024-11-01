@@ -2,7 +2,7 @@ import React from 'react'
 import {combineUrls, Components, getSiteUrl, registerComponent} from '../../lib/vulcan-lib'
 import {useCurrentUser} from '../common/withUser'
 import {AnalyticsContext} from '../../lib/analyticsEvents'
-import ForumNoSSR from '../common/ForumNoSSR'
+import DeferRender from '../common/DeferRender'
 import {PostsListViewProvider} from '../hooks/usePostsListView'
 
 
@@ -44,18 +44,18 @@ const FrontpageNode = ({classes}: { classes: ClassesType<typeof styles> }) => {
       <DismissibleSpotlightItem current className={classes.spotlightMargin}/>
       <HomeLatestPosts/>
       <QuickTakesSection/>
-      <ForumNoSSR if={!!currentUser}>
-        {/*todo: re-enable later when we have popular comments*/}
+      {/*<DeferRender ssr={!!currentUser} clientTiming="mobile-aware">*/}
+      {/*  todo: re-enable later when we have popular comments*/}
         {/*<EAPopularCommentsSection />*/}
-      </ForumNoSSR>
-      <ForumNoSSR if={!!currentUser}>
+      {/*</DeferRender>*/}
+      <DeferRender ssr={!!currentUser} clientTiming="async-non-blocking">
         <RecentDiscussionFeed
           title="Recent discussion"
           af={false}
           commentsLimit={4}
           maxAgeHours={18}
         />
-      </ForumNoSSR>
+      </DeferRender>
     </>
   )
 }

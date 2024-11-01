@@ -98,16 +98,16 @@ export const DFAdditionalInfoStage = ({classes}: {
         Share some additional information to improve you forum experience (optional)
       </div>
       <div>
-        <SectionTitle title="Profile Image" className={classes.title}/>
+        <SectionTitle title="Profile Image" titleClassName={classes.title}/>
         <EAUsersProfileImage user={currentUser!}/>
       </div>
       <div>
-        <SectionTitle title="City" className={classes.title}/>
+        <SectionTitle title="City" titleClassName={classes.title}/>
         <LocationPicker
           document={{}}
           path={'mapLocation'}
           value={mapLocation}
-          updateCurrentValues={(it: any) => {
+          updateCurrentValues={async (it: any) => {
             setMapLocation(it['mapLocation'])
           }}
           locationTypes={['(cities)']}
@@ -117,7 +117,7 @@ export const DFAdditionalInfoStage = ({classes}: {
         </div>
       </div>
       <div>
-        <SectionTitle title="WSDC number" className={classes.title}/>
+        <SectionTitle title="WSDC number" titleClassName={classes.title}/>
         <EAOnboardingInput
           value={wsdcNumber}
           setValue={onWsdcNumberChange}
