@@ -58,7 +58,8 @@ const TagPageRouter = () => {
     },
   });
 
-  if (!tag || loadingTag) return null;
+  if (loadingTag) return null
+  if (!tag) return <Components.Error404/>
   
   if (
     !!tag.isSubforum !== !!overridenLayoutOptions.unspacedGridLayout ||
