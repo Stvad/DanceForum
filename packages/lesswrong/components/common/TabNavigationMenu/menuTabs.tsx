@@ -394,7 +394,7 @@ export const menuTabs: ForumOptions<Array<MenuTab>> = {
     }, {
       id: 'allPosts',
       title: 'All Posts',
-      link: '/allPosts',
+      link: '/allPosts?timeframe=yearly&sortedBy=topAdjusted',
       iconComponent: Sort,
       tooltip: 'See all posts, filtered and sorted by date, karma, and more.',
       showOnMobileStandalone: false,
