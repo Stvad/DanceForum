@@ -441,7 +441,7 @@ export const menuTabs: ForumOptions<Array<MenuTab>> = {
       showOnCompressed: true,
     }, {
       id: 'how-to',
-      title: preferredHeadingCase('How to use the forum FAQ & Tips'),
+      title: 'How to use the forum FAQ',
       link: '/posts/N6vFysYymjnwMRTdL',
       subItem: true,
     }, {
